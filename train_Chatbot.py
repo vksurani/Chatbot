@@ -4,7 +4,10 @@ from keras.layers import Dense, Activation, Dropout
 from keras.optimizers import SGD
 import random
 import nltk
-nltk.download('punkt')
+import os, ssl
+if (not os.environ.get('PYTHONHTTPSVERIFY', '') and getattr(ssl, '_create_unverified_context', None)):
+    ssl._create_default_https_context = ssl._create_unverified_context
+nltk.download()
 from nltk.stem import WordNetLemmatizer
 lemmatizer = WordNetLemmatizer()
 import json
@@ -47,5 +50,5 @@ print(len(classes), "classes", classes)
 print(len(words), "unique lemmatized words", words) 
 
 pickle.dump(words,open('words.pkl','wb'))
-pickel.dump(classes,open('classes.pkl','wb'))
+pickle.dump(classes,open('classes.pkl','wb'))
 
